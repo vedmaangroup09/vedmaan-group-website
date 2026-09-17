@@ -1,0 +1,17 @@
+node_modules/
+.next/
+out/
+*.log
+.env*
+existing-site-backup-2026-09-09/
+tsconfig.tsbuildinfo
+.chrome-codex/
+.brochure-analysis/
+.*.png
+.*.jpg
+.drive-*.html
+*.before.css
+*.before.tsx
+dream-valley-rendered-audit.txt
+public/assets/vedmaan-story.mp4
+public/brochures/dream-valley-documents/dream-valley-brochure.pdf
