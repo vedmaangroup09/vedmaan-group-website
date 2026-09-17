@@ -118,6 +118,8 @@ h1 em,h2 em{font-style:italic;font-weight:500;letter-spacing:-.05em}.projectBody
 .projectBody>a{margin-top:16px;font-size:11px;letter-spacing:.16em}
 
 .experienceImage img{object-position:center 58%}
+.experienceImage .experienceMobileImage{display:none}
+@media(max-width:900px){.experienceImage .experienceDesktopImage{display:none}.experienceImage .experienceMobileImage{display:block;object-position:center top}}
 
 /* Soft travelling gold light around the four experience boxes. */
 @property --feature-glow-angle{syntax:"<angle>";inherits:false;initial-value:0deg}

@@ -638,6 +638,14 @@ export default function Home() {
             alt="Dream Valley entrance at sunset"
             fill
             sizes="100vw"
+            className="experienceDesktopImage"
+          />
+          <Image
+            src="/assets/dream-valley-experience-mobile.png"
+            alt="Dream Valley entrance at sunset"
+            fill
+            sizes="(max-width: 900px) 100vw, 1px"
+            className="experienceMobileImage"
           />
         </div>
         <div className="experiencePanel">
