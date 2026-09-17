@@ -2,13 +2,25 @@
 
 import { ArrowRight, Check, MessageSquareText } from "lucide-react";
 import { FormEvent, useState } from "react";
+import { submitWebsiteForm } from "../../lib/submit-form";
 
 export default function ContactEnquiryForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+    try {
+      await submitWebsiteForm("contact", event.currentTarget);
+      setSubmitted(true);
+    } catch (submitError) {
+      setError(submitError instanceof Error ? submitError.message : "Unable to submit the form.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) return <div className="contactPageSuccess" role="status">
@@ -27,7 +39,9 @@ export default function ContactEnquiryForm() {
       <label className="contactMessage">Enter Number<input required name="phone" autoComplete="tel" inputMode="tel" placeholder="Enter Number" /></label>
       <label className="contactMessage">Enter Message<textarea required name="message" rows={5} placeholder="Enter Message" /></label>
     </div>
-    <label className="contactConsentCheck"><input required type="checkbox" defaultChecked /><span>I authorize company representatives to Call, SMS, Email or WhatsApp me about its products and offers. This consent overrides any registration for DNC/NDNC.</span></label>
-    <button className="button gold contactSubmit">Submit Now <ArrowRight /></button>
+    <label className="formHoneypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
+    <label className="contactConsentCheck"><input required name="consent" value="accepted" type="checkbox" defaultChecked /><span>I authorize company representatives to Call, SMS, Email or WhatsApp me about its products and offers. This consent overrides any registration for DNC/NDNC.</span></label>
+    {error && <p className="formSubmitError" role="alert">{error}</p>}
+    <button className="button gold contactSubmit" disabled={loading}>{loading ? "Submitting..." : "Submit Now"} <ArrowRight /></button>
   </form>;
 }

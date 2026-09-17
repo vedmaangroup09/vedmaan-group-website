@@ -3,6 +3,7 @@ node_modules/
 out/
 *.log
 .env*
+!.env.example
 existing-site-backup-2026-09-09/
 tsconfig.tsbuildinfo
 .chrome-codex/

@@ -23,6 +23,7 @@ import {
 import { CSSProperties, FormEvent, useEffect, useRef, useState } from "react";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
+import { submitWebsiteForm } from "../lib/submit-form";
 
 const projects = [
   {
@@ -242,6 +243,8 @@ function AnimatedNumber({
 
 export default function Home() {
   const [submitted, setSubmitted] = useState(false);
+  const [formLoading, setFormLoading] = useState(false);
+  const [formError, setFormError] = useState("");
   const [activeSlide, setActiveSlide] = useState(0);
   const [projectSlide, setProjectSlide] = useState(0);
   const [locationSlide, setLocationSlide] = useState(0);
@@ -321,9 +324,18 @@ export default function Home() {
     }, 3500);
     return () => window.clearInterval(timer);
   }, []);
-  const submit = (event: FormEvent<HTMLFormElement>) => {
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    setFormLoading(true);
+    setFormError("");
+    try {
+      await submitWebsiteForm("site_visit", event.currentTarget);
+      setSubmitted(true);
+    } catch (submitError) {
+      setFormError(submitError instanceof Error ? submitError.message : "Unable to submit the form.");
+    } finally {
+      setFormLoading(false);
+    }
   };
 
   return (
@@ -942,8 +954,10 @@ export default function Home() {
                   rows={3}
                 />
               </label>
-              <button className="button gold formButton">
-                Request a callback <ArrowRight size={18} />
+              <label className="formHoneypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
+              {formError && <p className="formSubmitError" role="alert">{formError}</p>}
+              <button className="button gold formButton" disabled={formLoading}>
+                {formLoading ? "Submitting..." : "Request a callback"} <ArrowRight size={18} />
               </button>
               <small className="consent">
                 <Check size={13} /> By submitting, you agree to receive project
