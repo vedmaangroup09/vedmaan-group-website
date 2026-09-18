@@ -43,7 +43,15 @@ export async function ensureSubmissionsTable() {
         INDEX idx_form_type (form_type),
         INDEX idx_created_at (created_at)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-    `).then(() => undefined).catch((error) => {
+    `).then(() => getDatabase().query(`
+      CREATE TABLE IF NOT EXISTS application_settings (
+        setting_key VARCHAR(100) NOT NULL,
+        setting_value TEXT NOT NULL,
+        is_secret TINYINT(1) NOT NULL DEFAULT 0,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        PRIMARY KEY (setting_key)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    `)).then(() => undefined).catch((error) => {
       schemaReady = undefined;
       throw error;
     });

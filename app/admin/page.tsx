@@ -23,7 +23,7 @@ export default async function AdminDashboard({ searchParams }: { searchParams: P
   const countFor = (type: string) => Number(counts.find((item) => item.form_type === type)?.total || 0);
 
   return <main className="adminShell">
-    <header className="adminHeader"><div><span>Vedmaan Group</span><h1>Form submissions</h1></div><AdminLogoutButton /></header>
+    <header className="adminHeader"><div><span>Vedmaan Group</span><h1>Form submissions</h1></div><div className="adminHeaderActions"><a href="/admin/settings">Email settings</a><AdminLogoutButton /></div></header>
     <section className="adminStats"><a className={selected === "all" ? "active" : ""} href="/admin"><span>All submissions</span><b>{total}</b></a>{Object.entries(titles).map(([type, title]) => <a className={selected === type ? "active" : ""} href={`/admin?type=${type}`} key={type}><span>{title}</span><b>{countFor(type)}</b></a>)}</section>
     <section className="adminTableCard">
       <div className="adminTableHead"><h2>{selected === "all" ? "Recent submissions" : titles[selected]}</h2><span>Latest 500 records</span></div>
