@@ -1956,3 +1956,33 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     margin-top:4px;
   }
 }
+
+/* Mobile Approach flow: copy, slider, principles and CTA in a natural reading order. */
+@media(max-width:560px){
+  .storyApproach{
+    display:flex;
+    align-items:stretch;
+    flex-direction:column;
+    gap:0;
+  }
+  .storyApproach:before{display:none}
+  .storyApproachCopy{display:contents}
+  .storyApproachCopy>.eyebrow{order:1}
+  .storyApproachCopy>h2{order:2;margin-bottom:18px}
+  .storyApproachLead{order:3;margin:0}
+  .storyApproachVisual{
+    order:4;
+    width:100%;
+    max-width:none;
+    height:365px;
+    margin-top:20px;
+  }
+  .storyApproachPrinciples{
+    order:5;
+    margin-top:28px;
+  }
+  .storyApproachFooter{
+    order:6;
+    margin-top:30px;
+  }
+}
