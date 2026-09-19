@@ -2264,6 +2264,14 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   .innerPageHero p.eyebrow{
     font-size:8px!important;
   }
+  body>main>.hero .heroCopy,
+  .storyHeroCopy>p:not(.eyebrow),
+  .projectsHeroCopy>p:not(.eyebrow),
+  .contactHeroCopy>p:not(.eyebrow),
+  .innerPageHero>div>p:last-of-type,
+  .newsPage .newsHero>div>p:last-child{
+    font-size:11px!important;
+  }
 
   .articleBody blockquote p{
     font-size:23px!important;
