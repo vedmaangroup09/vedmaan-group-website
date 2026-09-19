@@ -1861,3 +1861,78 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   .storyTimelineHead>p:last-child{margin:0;font-size:12px;line-height:1.65}
   .storyJourneyPath{margin-top:36px}
 }
+
+/* Replace the cramped horizontal journey scroller with a readable mobile timeline. */
+@media(max-width:560px){
+  .storyJourneyPath{
+    position:relative;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:22px;
+    margin:36px 0 0;
+    padding:5px 0 5px 34px;
+    overflow:visible;
+    scroll-snap-type:none;
+  }
+  .storyJourneyPath:before{
+    content:"";
+    position:absolute;
+    left:7px;
+    top:34px;
+    bottom:34px;
+    width:1px;
+    background:linear-gradient(#d2a13f,#efd48d 82%,transparent);
+  }
+  .storyJourneyLine,
+  .storyJourneyFinish{display:none}
+  .storyJourneyPath article,
+  .storyJourneyPath article:nth-of-type(2),
+  .storyJourneyPath article:nth-of-type(4){
+    position:relative;
+    display:grid;
+    grid-template-columns:72px minmax(0,1fr);
+    grid-template-rows:auto auto;
+    align-items:start;
+    gap:7px 13px;
+    width:100%;
+    padding:0;
+    text-align:left;
+    scroll-snap-align:none;
+  }
+  .storyJourneyImage{
+    grid-column:1;
+    grid-row:1 / 3;
+    width:68px;
+    height:68px;
+    align-self:start;
+    border-width:4px;
+  }
+  .storyJourneyPath article>i{
+    position:absolute;
+    left:-33px;
+    top:27px;
+    width:13px;
+    height:13px;
+    margin:0;
+    border-width:3px;
+  }
+  .storyJourneyPath article>b{
+    grid-column:2;
+    grid-row:1;
+    align-self:end;
+    font-size:20px;
+    line-height:1;
+  }
+  .storyJourneyCard{
+    grid-column:2;
+    grid-row:2;
+    width:100%;
+    min-height:0;
+    margin:0;
+    padding:22px 16px 16px;
+    text-align:left;
+  }
+  .storyJourneyCard:before{left:16px;transform:none}
+  .storyJourneyCard h3{margin:10px 0 8px;font-size:17px}
+  .storyJourneyCard p{font-size:10px;line-height:1.6}
+}
