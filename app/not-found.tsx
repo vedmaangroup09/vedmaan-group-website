@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { ArrowLeft, Home } from "lucide-react";
+import { ArrowRight, House, MapPinned } from "lucide-react";
 import SiteFooter from "./components/SiteFooter";
 import SiteHeader from "./components/SiteHeader";
 
 export default function NotFound() {
-  return <main className="notFoundPage"><SiteHeader /><section className="notFound"><div className="notFoundNumber">404</div><div><p className="eyebrow light"><span /> Page not found</p><h1>This address doesn&apos;t<br /><em>lead home.</em></h1><p>The page may have moved or the link may be incorrect. Explore our communities or return to the homepage.</p><div><Link className="button gold" href="/">Back to home <Home /></Link><Link href="/projects">Explore projects <ArrowLeft /></Link></div></div></section><SiteFooter /></main>;
+  return <main className="notFoundPage"><SiteHeader /><section className="notFound"><div className="notFoundVisual" aria-hidden="true"><span>4</span><i><MapPinned /></i><span>4</span></div><div className="notFoundCopy"><p className="eyebrow light"><span /> Page not found</p><h1>This address doesn&apos;t <em>lead home.</em></h1><p>The page may have moved or the link may be incorrect. Explore our communities or return to the homepage.</p><div className="notFoundActions"><Link className="button gold" href="/">Back to home <House /></Link><Link href="/projects">Explore projects <ArrowRight /></Link></div></div></section><SiteFooter /></main>;
 }
