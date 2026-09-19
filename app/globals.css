@@ -2265,6 +2265,10 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   body>main>.hero .eyebrow{
     font-size:10px!important;
   }
+  .propertyDetailHeroCopy>p,
+  .propertyHeroLocation{
+    font-size:10px!important;
+  }
   body>main>.hero .heroCopy,
   .storyHeroCopy>p:not(.eyebrow),
   .projectsHeroCopy>p:not(.eyebrow),
@@ -2285,5 +2289,8 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   }
   .storyApproachNote{
     font-size:27px!important;
+  }
+  .propertyOverviewBenefits b{
+    font-size:12px!important;
   }
 }
