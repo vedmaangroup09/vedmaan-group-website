@@ -2021,3 +2021,36 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   .projectsHeroActions{margin-top:14px}
   .projectsWatchVideo{display:none!important}
 }
+
+/* Use a full-width lead image instead of two cramped half-width mobile images. */
+@media(max-width:560px){
+  .projectsLegacyCollage{
+    position:relative;
+    display:block;
+    width:100%;
+    height:300px;
+    min-height:300px;
+  }
+  .projectsLegacyMain{
+    position:absolute;
+    inset:0 0 34px;
+    width:100%;
+    height:auto;
+  }
+  .projectsLegacyMain img{object-position:center 58%}
+  .projectsLegacySmall{
+    position:absolute;
+    z-index:2;
+    right:0;
+    bottom:0;
+    width:42%;
+    height:128px;
+    border:6px solid #f8f4eb;
+  }
+  .projectsLegacySmall img{object-position:center}
+  .projectsLegacyYear{
+    z-index:3;
+    left:-12px;
+    bottom:12px;
+  }
+}
