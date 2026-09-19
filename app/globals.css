@@ -2491,3 +2491,35 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     overflow-wrap:anywhere;
   }
 }
+
+/* Stack related-news cards vertically on phones: image first, copy below. */
+@media(max-width:600px){
+  .articleRelated>div>a{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    padding:12px;
+  }
+  .articleRelated a>span{
+    width:100%;
+    height:210px;
+    min-height:210px;
+    grid-row:auto;
+  }
+  .articleRelated a small{
+    align-self:flex-start;
+    margin:18px 8px 0;
+  }
+  .articleRelated h3{
+    margin:8px 8px 0;
+    font-size:21px;
+  }
+  .articleRelated a>p{
+    min-height:0;
+    margin:12px 8px 0;
+  }
+  .articleRelated a>b{
+    align-self:flex-start;
+    margin:18px 8px 5px;
+  }
+}
