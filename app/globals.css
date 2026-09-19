@@ -2217,3 +2217,35 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     padding:0;
   }
 }
+
+/* Clean, readable alignment for the facts beneath mobile project heroes. */
+@media(max-width:560px){
+  .propertyHeroFacts>span{
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:5px;
+    padding:8px 4px;
+  }
+  .propertyHeroFacts small{
+    order:1;
+    align-self:center;
+    margin:0;
+    color:#efc667;
+    font-size:6px;
+    font-weight:800;
+    line-height:1.25;
+    letter-spacing:.06em;
+    text-align:center;
+  }
+  .propertyHeroFacts b{
+    order:2;
+    align-self:center;
+    margin:0;
+    color:#fff;
+    font-size:8px;
+    font-weight:600;
+    line-height:1.25;
+    text-align:center;
+  }
+}
