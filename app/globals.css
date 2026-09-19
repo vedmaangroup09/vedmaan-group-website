@@ -2075,3 +2075,17 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     margin-top:30px;
   }
 }
+
+/* Give the mobile projects catalogue heading the full row. */
+@media(max-width:560px){
+  .projectsCatalogueHead{
+    display:block;
+    width:100%;
+  }
+  .projectsCatalogueHead>div:first-child{width:100%}
+  .projectsCatalogueHead>div:last-child{display:none}
+  .projectsCatalogueHead h2{
+    width:100%;
+    max-width:none;
+  }
+}
