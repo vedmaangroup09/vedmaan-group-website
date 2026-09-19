@@ -42,6 +42,7 @@ export default function ProjectPlanning({ name, location, status, type, rera, im
     { label: "Location Context", icon: Route, image: "/assets/map.webp", alt: `${name} location context` },
   ];
   const current = tabs[active];
+  const renderActions = (className: string) => <div className={className}><Link className="button gold" href="/contact#enquiry">{isDreamValley ? "Apply now" : "Request project details"} <ArrowRight /></Link>{isSouthCityGreens ? <a className="propertyBrochureLink" href="/brochures/south-city-greens-brochure.pdf" download><Download /> Download brochure</a> : isDreamValley ? <a className="propertyBrochureLink" href="/brochures/dream-valley-brochure.pdf" download><Download /> Scheme brochure</a> : isSouthCity2 ? <a className="propertyBrochureLink" href="/brochures/south-city-2-documents/south-city-2-brochure.pdf" download><Download /> Download brochure</a> : <Link className="propertyBrochureLink" href="/contact#enquiry"><Download /> Request brochure</Link>}</div>;
 
   return <section className="propertyPlan propertyPlanBrochure">
     <div className="propertyPlanCopy">
@@ -49,7 +50,7 @@ export default function ProjectPlanning({ name, location, status, type, rera, im
       <h2>{isSouthCityGreens ? <>Site layout <em>&amp; Jhajjar Master Plan.</em></> : isDreamValley ? <>Thoughtfully planned <em>for a superior living experience.</em></> : isSouthCity2 ? <>South City 2 <em>layout &amp; location.</em></> : <>A well-planned layout <em>for a better lifestyle.</em></>}</h2>
       <p>{isSouthCityGreens ? "19.99375 acres with 380 thoughtfully planned residential plots in Sector 36, Jhajjar." : isDreamValley ? "Total land area: 5.49375 acres. Number of plots: 92. Size of plots: 87.048 sq. mtr. to 145.623 sq. mtr." : isSouthCity2 ? "10.681 acres with 210 residential plots ranging from 90 to 180 sq. yd. in Sector 37, Jhajjar." : `A thoughtfully planned ${type.toLowerCase()} community in ${location}.`}</p>
       <div className="propertyPlanSpecs">{isSouthCityGreens ? <><span><small>Total land area</small><b>19.99375 Acres</b></span><span><small>Number of plots</small><b>380</b></span><span><small>Licence</small><b>84 of 2026</b></span><span><small>RERA</small><b>HRERA-PKL-JJR-949-2026</b></span></> : isDreamValley ? <><span><small>Total land area</small><b>5.49375 Acres</b></span><span><small>Number of plots</small><b>92</b></span><span><small>License</small><b>21 of 2026</b></span><span><small>RERA</small><b>HRERA-PKL-JJR-940-2026</b></span></> : isSouthCity2 ? <><span><small>Total land area</small><b>10.681 Acres</b></span><span><small>Number of plots</small><b>210</b></span><span><small>Plot sizes</small><b>90–180 sq. yd.</b></span><span><small>RERA</small><b>HRERA-PKL-JJR-637-2024</b></span></> : <><span><small>Location</small><b>{location}</b></span><span><small>Development type</small><b>{type}</b></span><span><small>Project status</small><b>{status}</b></span><span><small>RERA</small><b>{rera}</b></span></>}</div>
-      <div className="propertyPlanActions"><Link className="button gold" href="/contact#enquiry">{isDreamValley ? "Apply now" : "Request project details"} <ArrowRight /></Link>{isSouthCityGreens ? <a className="propertyBrochureLink" href="/brochures/south-city-greens-brochure.pdf" download><Download /> Download brochure</a> : isDreamValley ? <a className="propertyBrochureLink" href="/brochures/dream-valley-brochure.pdf" download><Download /> Scheme brochure</a> : isSouthCity2 ? <a className="propertyBrochureLink" href="/brochures/south-city-2-documents/south-city-2-brochure.pdf" download><Download /> Download brochure</a> : <Link className="propertyBrochureLink" href="/contact#enquiry"><Download /> Request brochure</Link>}</div>
+      {renderActions("propertyPlanActions propertyPlanActionsDesktop")}
     </div>
     <div className="propertyPlanPanel">
       <div className={`propertyPlanTabs${isSouthCityGreens || isSouthCity2 ? " propertyPlanTabsTwo" : ""}`} role="tablist" aria-label={`${name} planning views`}>
@@ -59,5 +60,6 @@ export default function ProjectPlanning({ name, location, status, type, rera, im
         {isSouthCity2 && active === 1 ? <iframe className="propertyPlanMap" title="South City 2 location map" src="https://www.google.com/maps?q=28.5965833,76.62775&z=17&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /> : <div className="propertyPlanImage"><Image key={current.image} src={current.image} alt={current.alt} fill sizes="(max-width: 900px) 100vw, 48vw" /></div>}
       </div>
     </div>
+    {renderActions("propertyPlanActions propertyPlanActionsMobile")}
   </section>;
 }

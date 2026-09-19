@@ -1016,6 +1016,26 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   87.5%,97.5%{z-index:1;left:0;top:132px;width:34%;height:340px;opacity:1;visibility:visible}
   100%{z-index:3;left:26%;top:50px;width:48%;height:465px;opacity:1;visibility:visible}
 }
+
+/* Mobile project CTAs follow the visual/card content instead of interrupting it. */
+.propertyOverviewMobileCta,
+.propertyPlanActions.propertyPlanActionsMobile{display:none}
+
+@media(max-width:560px){
+  .propertyOverviewCtaDesktop,
+  .propertyPlanActions.propertyPlanActionsDesktop{display:none!important}
+  .propertyOverviewMobileCta{
+    display:inline-flex;
+    justify-self:start;
+  }
+  .propertyPlanActions.propertyPlanActionsMobile{
+    display:flex;
+    align-items:flex-start;
+    flex-direction:column;
+    gap:18px;
+    margin-top:28px;
+  }
+}
 @media(hover:hover){.storyApproachVisual:hover .storyApproachPanel{animation-play-state:paused}}
 @media(hover:hover){.storyApproachPanel:hover img{transform:scale(1.045)}}
 @media(max-width:1100px) and (min-width:901px){.storyApproach{gap:25px}.storyApproachPrinciples article{padding-inline:8px}.storyApproachFooter{gap:12px}.storyApproachFooter>span{padding-left:12px}.storyApproachVisual{height:490px}}
