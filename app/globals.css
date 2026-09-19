@@ -1990,10 +1990,10 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
 /* Compact the closing CTA on phones without changing its desktop composition. */
 @media(max-width:560px){
   .projectsClosingCta{
-    min-height:330px;
+    min-height:280px;
     align-content:center;
-    gap:18px;
-    padding:34px 7vw;
+    gap:14px;
+    padding:24px 7vw;
   }
   .projectsClosingCopy{align-self:center}
   .projectsClosingCopy p{margin-top:12px}
