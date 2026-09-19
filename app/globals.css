@@ -1998,3 +1998,26 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   .projectsClosingCopy{align-self:center}
   .projectsClosingCopy p{margin-top:8px}
 }
+
+/* Keep the Projects mobile hero as compact as the homepage hero. */
+@media(max-width:560px){
+  .projectsHeroCopy{
+    width:86vw;
+    max-width:320px;
+    margin:30px 0 0 7vw;
+    padding:0;
+  }
+  .projectsHeroCopy h1{
+    margin:11px 0;
+    font-size:35px;
+    line-height:.98;
+  }
+  .projectsHeroCopy>p:not(.eyebrow){
+    max-width:320px;
+    margin:0;
+    font-size:11px;
+    line-height:1.5;
+  }
+  .projectsHeroActions{margin-top:14px}
+  .projectsWatchVideo{display:none!important}
+}
