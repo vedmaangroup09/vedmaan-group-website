@@ -1836,8 +1836,11 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   }
   .storyTimelineProject img{
     object-fit:cover;
-    object-position:center top;
+    object-position:center 18%;
+    transform:scale(1.08)!important;
+    transform-origin:center top;
   }
+  .storyTimelineProject:hover img{transform:scale(1.08)!important}
   .storyTimelineProject:after{
     display:block;
     z-index:2;
@@ -1850,7 +1853,7 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     position:relative;
     z-index:3;
     order:2;
-    margin-top:-48px;
+    margin-top:-60px;
     padding-top:0;
   }
   .storyTimelineHead .eyebrow{margin:0}
