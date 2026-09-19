@@ -2293,4 +2293,10 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   .propertyOverviewBenefits b{
     font-size:12px!important;
   }
+  .propertyPlanSpecs small{
+    font-size:9px!important;
+  }
+  .propertyPlanSpecs b{
+    font-size:12px!important;
+  }
 }
