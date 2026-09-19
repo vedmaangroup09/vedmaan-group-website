@@ -259,10 +259,20 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
         <p>{isSouthCityGreens ? "Every detail here is designed to disappear into the ease of daily life." : isDreamValley ? "Thoughtfully planned amenities for a superior living experience." : isSouthCity2 ? "Gated planning, green pockets and essential infrastructure listed in the supplied project brochure." : "Thoughtful amenities that make daily life healthier, easier and more connected."}</p>
       </div>
       <div className="propertyAmenitiesCollection">
-        {amenities.map(({ title, detail, Icon }) => <article key={title}>
-          <i><Icon /></i>
-          <div><b>{title}</b>{!isSouthCityGreens && !isDreamValley && !isSouthCity2 && <small>{detail}</small>}</div>
-        </article>)}
+        <div className="propertyAmenitiesTrack">
+          <div className="propertyAmenitiesSet">
+            {amenities.map(({ title, detail, Icon }) => <article key={title}>
+              <i><Icon /></i>
+              <div><b>{title}</b>{!isSouthCityGreens && !isDreamValley && !isSouthCity2 && <small>{detail}</small>}</div>
+            </article>)}
+          </div>
+          <div className="propertyAmenitiesSet propertyAmenitiesSetClone" aria-hidden="true">
+            {amenities.map(({ title, detail, Icon }) => <article key={`clone-${title}`}>
+              <i><Icon /></i>
+              <div><b>{title}</b>{!isSouthCityGreens && !isDreamValley && !isSouthCity2 && <small>{detail}</small>}</div>
+            </article>)}
+          </div>
+        </div>
       </div>
     </section>
 
