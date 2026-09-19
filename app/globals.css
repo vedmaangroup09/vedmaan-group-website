@@ -2340,7 +2340,10 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     width:100%;
     padding:28px 0 0;
   }
-  .propertyConnectivity>.projectDestinationGrid{order:30}
+  .propertyConnectivity>.projectDestinationGrid{
+    order:30;
+    margin-top:16px;
+  }
   .propertyConnectivityCopy>.button{
     order:91;
     justify-self:start;
