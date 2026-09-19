@@ -2323,4 +2323,7 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   .propertyAmenitiesCollection b{
     font-size:13px;
   }
+  .propertyConnectivityCopy{
+    padding:0 0 36px;
+  }
 }
