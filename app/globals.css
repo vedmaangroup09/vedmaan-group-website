@@ -2324,6 +2324,23 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     font-size:13px;
   }
   .propertyConnectivityCopy{
-    padding:0 0 36px;
+    display:contents!important;
+    padding:0;
+  }
+  .propertyConnectivityCopy>.eyebrow{order:1}
+  .propertyConnectivityCopy>h2{order:2}
+  .propertyConnectivityCopy>p:not(.eyebrow){order:3}
+  .propertyConnectivityVisual{order:10}
+  .propertyConnectivityFacts{order:20}
+  .propertyConnectivity>.projectDestinationGrid{order:30}
+  .propertyConnectivityCopy>.button{
+    order:90;
+    justify-self:start;
+    margin-top:36px;
+  }
+  .propertyConnectivityBenefits{
+    order:91;
+    width:100%;
+    margin-top:28px;
   }
 }
