@@ -2523,3 +2523,40 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     margin:18px 8px 5px;
   }
 }
+
+/* Use the same mobile container rhythm throughout the agent page. */
+@media(max-width:650px){
+  .agentPage{
+    width:100%;
+    max-width:100vw;
+    overflow-x:clip;
+  }
+  .agentPage .agentHero{
+    padding-inline:7vw!important;
+  }
+  .agentPage .agentHero>div{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+  .agentBenefits,
+  .agentRegistration,
+  .agentRegistrationFull{
+    width:100%;
+    max-width:100%;
+    padding-inline:7vw;
+  }
+  .agentSectionHead,
+  .agentBenefitGrid,
+  .agentRegistrationFull .agentRegistrationIntro,
+  .agentRegistrationFull .agentForm,
+  .agentRegistrationFull .agentFormGrid,
+  .agentRegistrationFull .agentFormGrid>*{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+  .agentRegistrationFull .agentForm{
+    padding:24px 18px;
+  }
+}
