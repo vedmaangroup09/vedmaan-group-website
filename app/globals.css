@@ -1719,3 +1719,55 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     stroke:currentColor!important;
   }
 }
+
+/* Match every primary page hero to the compact homepage hero on phones. */
+@media(max-width:560px){
+  :root{--mobile-hero-height:400px}
+  .storyHero,
+  .projectsHero,
+  .contactHero,
+  .innerPageHero,
+  .newsPage .newsHero{
+    height:var(--mobile-hero-height)!important;
+    min-height:var(--mobile-hero-height)!important;
+    max-height:var(--mobile-hero-height);
+  }
+  .storyHeroCopy{padding-top:42px}
+  .storyHeroCopy h1{margin:14px 0 16px;font-size:35px}
+  .storyHeroCopy>p:not(.eyebrow){max-width:330px;margin-bottom:16px;line-height:1.5}
+  .projectsHeroCopy{padding-top:42px}
+  .projectsHeroCopy h1{margin:14px 0 15px;font-size:35px}
+  .projectsHeroCopy>p:not(.eyebrow){max-width:330px;line-height:1.5}
+  .projectsHeroActions{margin-top:15px}
+  .projectsHeroFacts{height:70px}
+  .projectsFactNumbers span{padding-block:8px}
+  .projectsFactNumbers b,
+  .projectsHeroFacts .projectsFactNumbers b,
+  .projectsFactNumbers span:nth-child(3) b{font-size:21px}
+  .contactHero{align-items:center}
+  .contactHeroCopy{padding-top:42px}
+  .contactPage .contactHeroCopy h1{margin:13px 0 14px;font-size:34px;line-height:1}
+  .contactHeroCopy>p:not(.eyebrow){margin:0;line-height:1.45}
+  .contactHeroCopy>div{margin-top:14px;gap:10px}
+  .contactHeroCards{height:62px}
+  .contactHeroCards span{min-height:62px;padding:8px}
+  .contactHeroCards b{font-size:15px}
+  .innerPageHero,
+  .newsPage .newsHero,
+  .agentPage .innerPageHero,
+  .legalPage .innerPageHero{
+    align-items:center;
+    padding:92px 7vw 35px!important;
+  }
+  .innerPageHero h1,
+  .newsPage .newsHero h1{
+    margin:13px 0 15px;
+    font-size:35px;
+    line-height:1;
+  }
+  .innerPageHero>div>p:last-of-type,
+  .newsPage .newsHero>div>p:last-child{
+    font-size:12px;
+    line-height:1.55;
+  }
+}
