@@ -2417,3 +2417,45 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     padding:22px;
   }
 }
+
+/* Stabilise every shared single-project section on narrow mobile viewports. */
+@media(max-width:560px){
+  .propertyPage .propertyMotionReady [data-motion],
+  .propertyPage.propertyMotionReady [data-motion]{
+    opacity:1!important;
+    transform:none!important;
+    transition:none!important;
+  }
+  .propertyPage section,
+  .propertyOverview,
+  .propertyOverviewIntro,
+  .propertyOverviewCopy,
+  .propertyOverviewVisual,
+  .propertyOverviewBenefits,
+  .propertyPlan,
+  .propertyPlanCopy,
+  .propertyPlanPanel{
+    min-width:0;
+    max-width:100%;
+  }
+  .propertyOverview{
+    width:100%;
+    grid-template-columns:minmax(0,1fr);
+  }
+  .propertyOverviewIntro>.propertyOverviewCopy{
+    padding-left:0;
+  }
+  .propertyOverviewCopy p{
+    max-width:100%;
+    overflow-wrap:anywhere;
+  }
+  .propertyHeroFacts>span{
+    min-width:0;
+    overflow:hidden;
+  }
+  .propertyHeroFacts small,
+  .propertyHeroFacts b{
+    max-width:100%;
+    overflow-wrap:anywhere;
+  }
+}
