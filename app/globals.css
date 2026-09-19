@@ -1951,4 +1951,8 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     text-align:left;
   }
   .storyValuesHead h2 br{display:none}
+  .storyValuesHead h2 em{
+    display:block;
+    margin-top:4px;
+  }
 }
