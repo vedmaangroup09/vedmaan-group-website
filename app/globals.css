@@ -1036,6 +1036,38 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     margin-top:28px;
   }
 }
+
+/* News detail pages use the shared mobile hero scale and no desktop sidebar. */
+@media(max-width:760px){
+  .articleAside{
+    display:none!important;
+  }
+  .articleLayout{
+    grid-template-columns:minmax(0,1fr);
+    gap:0;
+  }
+  .articleHeroCopy h1,
+  .articlePage .articleHeroCopy h1{
+    margin:0;
+    font-size:35px!important;
+    line-height:.98;
+    letter-spacing:-.04em;
+  }
+  .articleHeroCopy>p{
+    margin-bottom:12px;
+    font-size:10px!important;
+    line-height:1.35;
+  }
+  .articleHeroCopy>strong{
+    margin-top:17px;
+    font-size:11px!important;
+    line-height:1.55;
+  }
+  .articleHeroCopy>a{
+    margin-bottom:20px;
+    font-size:11px!important;
+  }
+}
 @media(hover:hover){.storyApproachVisual:hover .storyApproachPanel{animation-play-state:paused}}
 @media(hover:hover){.storyApproachPanel:hover img{transform:scale(1.045)}}
 @media(max-width:1100px) and (min-width:901px){.storyApproach{gap:25px}.storyApproachPrinciples article{padding-inline:8px}.storyApproachFooter{gap:12px}.storyApproachFooter>span{padding-left:12px}.storyApproachVisual{height:490px}}
