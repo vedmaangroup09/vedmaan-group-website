@@ -629,7 +629,7 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
 .footerVisit a{width:100%!important;margin-top:13px;padding:12px 0;border-bottom-color:#efc667;color:#fff!important;font-size:10px!important}
 .footerBottom{position:relative;padding:21px max(5vw,calc((100vw - 1300px)/2));border-top:1px solid rgba(255,255,255,.12);color:rgba(194,210,233,.65);font-size:8px}
 @media(max-width:900px){.footerMain{grid-template-columns:1fr 1fr;gap:50px}.footerBrand{grid-column:1/3}.footerVisit{width:100%}}
-@media(max-width:560px){.footerMain{grid-template-columns:1fr 1fr;padding-top:65px;padding-bottom:55px;gap:42px 25px}.footerBrand{grid-column:1/3}.footerVisit{grid-column:1/3}.footerMain h4{font-size:20px}.footerMain>div>a{font-size:11px}.footerBottom{align-items:flex-start;gap:10px}}
+@media(max-width:560px){.footerMain{grid-template-columns:1fr 1fr;padding-top:54px;padding-bottom:44px;column-gap:24px;row-gap:30px}.footerBrand{grid-column:1/3}.footerMain>div:not(.footerBrand){gap:10px}.footerMain h4{margin:0 0 8px;font-size:20px;line-height:1.15}.footerVisit{grid-column:1/3;margin-top:2px}.footerVisit p{margin:0;max-width:315px;line-height:1.65}.footerVisit a{margin-top:6px}.footerMain>div>a{font-size:11px}.footerBottom{align-items:flex-start;gap:10px}}
 
 /* Projects listing page */
 .projectsPage{background:#fbfaf7;color:#102747}.projectsHeader{position:absolute;z-index:20;top:0;left:0;right:0;height:96px;display:flex;align-items:center;justify-content:space-between;padding:0 max(5vw,calc((100vw - 1300px)/2));border-bottom:1px solid rgba(255,255,255,.16)}
