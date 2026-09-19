@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Baby, Building2, BusFront, CarFront, ChartNoAxesCombined, Check, Download, Droplets, Dumbbell, Fence, Flower2, Footprints, GraduationCap, HeartPulse, House, Landmark, Leaf, MapPin, Phone, Plane, Route, ShieldCheck, TrainFront, Trees, Trophy, UsersRound, Waves, Waypoints } from "lucide-react";
+import { ArrowRight, Baby, Building2, BusFront, CarFront, ChartNoAxesCombined, Check, Download, Droplets, Dumbbell, Fence, Flower2, Footprints, GraduationCap, HeartPulse, House, Landmark, Leaf, MapPin, Plane, Route, ShieldCheck, TrainFront, Trees, Trophy, UsersRound, Waves, Waypoints } from "lucide-react";
 import { notFound } from "next/navigation";
 import FloatingActions from "../../components/FloatingActions";
 import SiteHeader from "../../components/SiteHeader";
@@ -397,7 +397,6 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
       <Link className="button gold" href="/contact#enquiry">{isSouthCityGreens || isDreamValley ? "Apply Now" : "Book a Site Visit"} <ArrowRight /></Link>
     </section>
 
-    <div className="propertyStickyEnquiry" aria-label="Project enquiry actions"><a href={isDreamValley ? "tel:+917290083083" : "tel:+918383953751"}><Phone /> Call now</a><Link href="/contact#enquiry">Enquire now <ArrowRight /></Link></div>
 
     <FloatingActions />
     <SiteFooter />

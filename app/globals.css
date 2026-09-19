@@ -2354,4 +2354,7 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     width:100%;
     margin-top:36px;
   }
+  .propertyPage{
+    padding-bottom:0;
+  }
 }
