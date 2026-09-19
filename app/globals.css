@@ -2054,3 +2054,24 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     bottom:12px;
   }
 }
+
+/* Place the Projects purpose CTA after all mobile section content. */
+@media(max-width:560px){
+  .projectsLegacy{
+    display:flex;
+    align-items:stretch;
+    flex-direction:column;
+    gap:0;
+  }
+  .projectsLegacyCopy{display:contents}
+  .projectsLegacyCopy>.eyebrow{order:1;margin:0}
+  .projectsLegacyCopy>h2{order:2;margin:18px 0 22px}
+  .projectsLegacyCopy>p:not(.eyebrow){order:3}
+  .projectsLegacyCollage{order:4;margin-top:36px}
+  .projectsLegacyValues{order:5;margin-top:36px}
+  .projectsLegacyCopy>.button{
+    order:6;
+    align-self:flex-start;
+    margin-top:30px;
+  }
+}
