@@ -1842,7 +1842,7 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     display:block;
     z-index:2;
     background:
-      linear-gradient(90deg,rgba(250,246,237,.78) 0%,rgba(250,246,237,.3) 18%,transparent 45%),
+      linear-gradient(90deg,#faf6ed 0%,rgba(250,246,237,.9) 12%,rgba(250,246,237,.58) 27%,rgba(250,246,237,.2) 43%,transparent 62%),
       linear-gradient(0deg,#faf6ed 0%,rgba(250,246,237,.94) 15%,rgba(250,246,237,.54) 32%,transparent 58%);
     pointer-events:none;
   }
@@ -1850,7 +1850,7 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     position:relative;
     z-index:3;
     order:2;
-    margin-top:-28px;
+    margin-top:-48px;
     padding-top:0;
   }
   .storyTimelineHead .eyebrow{margin:0}
