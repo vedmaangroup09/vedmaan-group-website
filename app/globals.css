@@ -2534,7 +2534,7 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   .agentPage .agentHero{
     height:400px;
     min-height:400px;
-    padding:0 7vw!important;
+    padding:64px 7vw 0!important;
     align-items:center;
   }
   .agentPage .agentHero>div{
