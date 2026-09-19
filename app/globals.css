@@ -2255,6 +2255,15 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   body p{
     font-size:14px!important;
   }
+  body p.eyebrow{
+    font-size:10px!important;
+  }
+  .storyHeroCopy p.eyebrow,
+  .projectsHeroCopy p.eyebrow,
+  .contactHeroCopy p.eyebrow,
+  .innerPageHero p.eyebrow{
+    font-size:8px!important;
+  }
 
   .articleBody blockquote p{
     font-size:23px!important;
