@@ -2535,16 +2535,17 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     padding-inline:7vw!important;
   }
   .agentPage .agentHero>div{
-    width:100%;
-    max-width:100%;
+    width:86vw!important;
+    max-width:86vw!important;
     min-width:0;
   }
   .agentBenefits,
   .agentRegistration,
   .agentRegistrationFull{
-    width:100%;
-    max-width:100%;
-    padding-inline:7vw;
+    width:auto!important;
+    max-width:none!important;
+    margin-inline:0;
+    padding-inline:7vw!important;
   }
   .agentSectionHead,
   .agentBenefitGrid,
@@ -2558,5 +2559,14 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   }
   .agentRegistrationFull .agentForm{
     padding:24px 18px;
+  }
+  .agentRegistrationFull .agentRegistrationIntro h2,
+  .agentRegistrationFull .agentRegistrationIntro h2 em,
+  .agentRegistrationFull .agentRegistrationIntro>p:not(.eyebrow),
+  .agentPage .agentHero>div>p:last-of-type{
+    width:100%;
+    max-width:100%;
+    white-space:normal!important;
+    overflow-wrap:anywhere;
   }
 }
