@@ -2333,6 +2333,7 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   .propertyConnectivityVisual{order:10}
   .propertyConnectivityVisual{
     width:100%;
+    min-height:420px;
   }
   .propertyConnectivityFacts{
     order:20;
