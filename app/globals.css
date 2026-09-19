@@ -1836,16 +1836,16 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   }
   .storyTimelineProject img{
     object-fit:cover;
-    object-position:center 18%;
-    transform:scale(1.08)!important;
-    transform-origin:center top;
+    object-position:center 68%;
+    transform:scale(1.14)!important;
+    transform-origin:center center;
   }
-  .storyTimelineProject:hover img{transform:scale(1.08)!important}
+  .storyTimelineProject:hover img{transform:scale(1.14)!important}
   .storyTimelineProject:after{
     display:block;
     z-index:2;
     background:
-      linear-gradient(90deg,#faf6ed 0%,rgba(250,246,237,.9) 12%,rgba(250,246,237,.58) 27%,rgba(250,246,237,.2) 43%,transparent 62%),
+      linear-gradient(90deg,#faf6ed 0%,rgba(250,246,237,.96) 16%,rgba(250,246,237,.68) 31%,rgba(250,246,237,.28) 48%,transparent 68%),
       linear-gradient(0deg,#faf6ed 0%,rgba(250,246,237,.94) 15%,rgba(250,246,237,.54) 32%,transparent 58%);
     pointer-events:none;
   }
