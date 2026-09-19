@@ -2202,3 +2202,18 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   .propertyDetailHeroCopy h1{margin:12px 0 16px}
   .propertyHeroActions{margin-top:0}
 }
+
+/* Centre mobile project copy between the header and facts bar. */
+@media(max-width:560px){
+  .propertyDetailHeroCopy{
+    position:absolute;
+    inset:78px auto 68px 7vw;
+    width:86vw;
+    max-width:320px;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    margin:0;
+    padding:0;
+  }
+}
