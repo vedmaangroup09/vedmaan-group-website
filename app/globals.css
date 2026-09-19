@@ -2249,3 +2249,10 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     text-align:center;
   }
 }
+
+/* Keep body copy comfortably readable across the mobile site. */
+@media(max-width:560px){
+  body p:not(.eyebrow):not(.propertyHeroLocation):not(.listingLocation):not(.projectsHeroScript):not(.storyApproachNote):not(.storyJourneyCallout):not(.testimonyProfile):not(.projectsVideoMeta){
+    font-size:14px!important;
+  }
+}
