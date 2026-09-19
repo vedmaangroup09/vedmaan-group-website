@@ -2532,7 +2532,10 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     overflow-x:clip;
   }
   .agentPage .agentHero{
-    padding-inline:7vw!important;
+    height:400px;
+    min-height:400px;
+    padding:0 7vw!important;
+    align-items:center;
   }
   .agentPage .agentHero>div{
     width:86vw!important;
@@ -2559,6 +2562,18 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   }
   .agentRegistrationFull .agentForm{
     padding:24px 18px;
+  }
+  .agentRegistrationFull .agentRegistrationIntro{
+    gap:0;
+  }
+  .agentRegistrationFull .agentRegistrationIntro>.eyebrow{
+    margin:0;
+  }
+  .agentRegistrationFull .agentRegistrationIntro h2{
+    margin:12px 0 0;
+  }
+  .agentRegistrationFull .agentRegistrationIntro>p:not(.eyebrow){
+    margin:18px 0 0;
   }
   .agentRegistrationFull .agentRegistrationIntro h2,
   .agentRegistrationFull .agentRegistrationIntro h2 em,
