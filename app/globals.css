@@ -2089,3 +2089,107 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
     max-width:none;
   }
 }
+
+/* Keep every testimonial background clean; no cropped decorative glyphs. */
+.testimony:before{
+  content:none!important;
+  display:none!important;
+}
+
+/* Match every single-project mobile hero to the shared compact hero rhythm. */
+@media(max-width:560px){
+  .propertyDetailHero{
+    height:400px;
+    min-height:400px;
+    max-height:400px;
+    padding-bottom:68px;
+    align-items:center;
+  }
+  .propertyDetailHeroCopy{
+    width:86vw;
+    max-width:320px;
+    margin:24px 0 0 7vw;
+    padding:0;
+    text-align:left;
+  }
+  .propertyDetailHeroCopy>p.propertyHeroLocation{
+    gap:7px;
+    margin:0;
+    font-size:8px;
+    line-height:1.2;
+  }
+  .propertyDetailHeroCopy>p.propertyHeroLocation svg{width:13px;height:13px}
+  .propertyDetailHeroCopy h1{
+    max-width:320px;
+    margin:11px 0;
+    font-size:35px;
+    line-height:.98;
+    letter-spacing:-.04em;
+  }
+  .propertyDetailHeroCopy>em{
+    max-width:320px;
+    margin:0 0 7px;
+    font-size:20px;
+    line-height:1.05;
+  }
+  .propertyHeroDescription{
+    display:-webkit-box!important;
+    overflow:hidden;
+    max-width:320px!important;
+    margin:0!important;
+    font-size:11px!important;
+    line-height:1.5!important;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+  }
+  .propertyHeroActions{
+    align-items:center!important;
+    flex-direction:row;
+    flex-wrap:nowrap!important;
+    gap:8px!important;
+    margin-top:12px;
+  }
+  .propertyPage .propertyHeroActions>a{
+    min-height:42px;
+    padding:5px 12px;
+    font-size:9px;
+    white-space:nowrap;
+  }
+  .propertyPage .propertyHeroActions>a:first-child{padding:5px 6px 5px 14px}
+  .propertyPage .propertyHeroActions>a:first-child svg{
+    width:29px!important;
+    height:29px!important;
+    flex-basis:29px;
+    padding:8px!important;
+  }
+  .propertyHeroFacts{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    height:68px;
+    padding-inline:3vw;
+  }
+  .propertyHeroFacts>span{
+    min-height:68px;
+    display:flex;
+    justify-content:center;
+    padding:7px 5px;
+    text-align:center;
+  }
+  .propertyHeroFacts svg{display:none}
+  .propertyHeroFacts small{font-size:5px;line-height:1.2}
+  .propertyHeroFacts b{margin-top:4px;font-size:7px;line-height:1.25}
+  .upcomingProjectHero{
+    min-height:400px;
+    height:400px;
+    padding:105px 7vw 45px;
+    align-items:flex-start;
+    text-align:left;
+  }
+  .upcomingProjectHero h1{
+    max-width:320px;
+    margin:11px 0;
+    font-size:35px;
+    line-height:.98;
+  }
+  .upcomingProjectHero>strong{padding:9px 16px;font-size:8px}
+  .upcomingProjectHero>a{margin-top:18px}
+}

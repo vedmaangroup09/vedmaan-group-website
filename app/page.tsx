@@ -136,7 +136,7 @@ const testimonials: Testimonial[] = [
   { quote: "Nice service and very planned township and guide as family.", name: "Verified Customer", details: "Google Review \u00b7 5 stars", image: "/assets/reviewer-google-1.webp", rating: 5 },
   { quote: "The project is well maintained, spacious, and located in a promising area.", name: "Verified Customer", details: "Google Review \u00b7 5 stars", image: "/assets/reviewer-google-2.webp", rating: 5 },
   { quote: "I truly appreciate their customer service and attention to detail.", name: "Verified Customer", details: "Google Review \u00b7 5 stars", image: "/assets/reviewer-google-3.webp", rating: 5 },
-  { quote: "Roof Builders and developers and Vedman Group are trusted developers.", name: "Ravi Kumar", details: "Google Review \u00b7 4 stars", image: "/assets/reviewer-ravi-kumar.webp", rating: 4 },
+  { quote: "Roof Builders and developers and Vedmaan Group are trusted developers.", name: "Ravi Kumar", details: "Google Review \u00b7 4 stars", image: "/assets/reviewer-ravi-kumar.webp", rating: 4 },
 ];
 
 function PropertyDropdown({
