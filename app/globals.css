@@ -2334,13 +2334,13 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   .propertyConnectivityFacts{order:20}
   .propertyConnectivity>.projectDestinationGrid{order:30}
   .propertyConnectivityCopy>.button{
-    order:90;
+    order:91;
     justify-self:start;
-    margin-top:36px;
+    margin-top:28px;
   }
   .propertyConnectivityBenefits{
-    order:91;
+    order:90;
     width:100%;
-    margin-top:28px;
+    margin-top:36px;
   }
 }
