@@ -1936,3 +1936,19 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   .storyJourneyCard h3{margin:10px 0 8px;font-size:17px}
   .storyJourneyCard p{font-size:10px;line-height:1.6}
 }
+
+/* Keep the Values section heading in one clean mobile column. */
+@media(max-width:560px){
+  .storyValuesHead{
+    display:block;
+    margin-bottom:32px;
+    text-align:left;
+  }
+  .storyValuesHead .eyebrow{margin:0}
+  .storyValuesHead h2{
+    max-width:330px;
+    margin:14px 0 0;
+    text-align:left;
+  }
+  .storyValuesHead h2 br{display:none}
+}
