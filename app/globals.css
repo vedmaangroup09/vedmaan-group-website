@@ -2250,9 +2250,22 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   }
 }
 
-/* Keep body copy comfortably readable across the mobile site. */
+/* Keep mobile paragraphs readable without changing compact UI text. */
 @media(max-width:560px){
-  body p:not(.eyebrow):not(.propertyHeroLocation):not(.listingLocation):not(.projectsHeroScript):not(.storyApproachNote):not(.storyJourneyCallout):not(.testimonyProfile):not(.projectsVideoMeta){
+  body p{
     font-size:14px!important;
+  }
+
+  .articleBody blockquote p{
+    font-size:23px!important;
+  }
+  .articleLead{
+    font-size:18px!important;
+  }
+  .propertyOverviewCopy p:first-child{
+    font-size:18px!important;
+  }
+  .storyApproachNote{
+    font-size:27px!important;
   }
 }
