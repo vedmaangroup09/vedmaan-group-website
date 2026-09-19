@@ -870,6 +870,7 @@ export default function Home() {
 
       <section className="contact section" id="contact">
         <div className="contactCopy">
+          <div className="contactIntro">
           <p className="eyebrow light">
             <span /> Begin your journey
           </p>
@@ -882,6 +883,7 @@ export default function Home() {
             Tell us what you’re looking for. Our property advisor will help you
             find the right plot and arrange a personalised site visit.
           </p>
+          </div>
           <div className="contactDetails">
             <a href="tel:+918383953751">
               <span>
@@ -909,8 +911,8 @@ export default function Home() {
               </span>
               <h3>Thank you!</h3>
               <p>
-                Your request has been noted in this preview. Live CRM
-                integration will be connected before launch.
+                Your request has been received. Our property team will contact
+                you shortly.
               </p>
               <button type="button" onClick={() => setSubmitted(false)}>
                 Send another enquiry

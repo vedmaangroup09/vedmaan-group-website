@@ -582,7 +582,7 @@ h1 em,h2 em{font-style:italic;font-weight:500;letter-spacing:-.05em}.projectBody
 .contactCopy .eyebrow{color:#c68e29}
 .contactCopy h2{color:#0a2d5c;font-size:clamp(48px,4.7vw,68px);line-height:.98}
 .contactCopy h2 em{display:block;margin-top:7px;color:#d39d35}
-.contactCopy>p:not(.eyebrow){max-width:500px;color:#687487;font-size:14px;line-height:1.85}
+.contactIntro>p:not(.eyebrow){max-width:500px;color:#687487;font-size:14px;line-height:1.85}
 .contactDetails{grid-template-columns:1fr 1fr;gap:14px;margin-top:38px}
 .contactDetails>a,.contactDetails>div{min-height:76px;gap:13px;padding:12px 14px;border:1px solid rgba(11,59,120,.11);border-radius:12px;background:rgba(255,255,255,.6)}
 .contactDetails>*>span{width:43px;height:43px;flex:0 0 43px;border:1px solid rgba(210,161,63,.65);border-radius:50%;background:#fff;color:#c68e29}
@@ -606,7 +606,7 @@ h1 em,h2 em{font-style:italic;font-weight:500;letter-spacing:-.05em}.projectBody
 .success{min-height:430px}
 @media(max-width:1050px){.contact{gap:55px}.contactDetails{grid-template-columns:1fr}.leadForm{padding:42px 38px}}
 @media(max-width:900px){.contact{grid-template-columns:1fr;padding-top:90px;padding-bottom:95px}.contactCopy{max-width:680px}.contactDetails{grid-template-columns:1fr 1fr}.leadForm{width:100%;max-width:720px}}
-@media(max-width:560px){.contact{padding-top:72px;padding-bottom:72px}.contactCopy h2{font-size:42px}.contactDetails{grid-template-columns:1fr}.leadForm{padding:35px 22px 28px;border-radius:18px}.formHeading span{font-size:30px}.formRow{grid-template-columns:1fr}.leadForm input,.leadForm select{height:49px}}
+@media(max-width:560px){.contact{gap:0;padding-top:72px;padding-bottom:72px}.contactCopy{display:contents}.contactIntro{order:1}.contactCopy h2{font-size:42px}.contact .leadForm{order:2;margin-top:34px;padding:28px 18px 24px;border-radius:18px}.contactDetails{order:3;grid-template-columns:1fr;margin-top:28px}.formHeading{padding-bottom:15px;margin-bottom:2px}.formHeading span{font-size:28px}.formHeading p{margin-top:5px}.leadForm label{gap:6px;margin:10px 0}.formRow{grid-template-columns:1fr;gap:0}.leadForm input,.leadForm select{height:44px;padding:10px 12px}.leadForm textarea{min-height:72px;padding:10px 12px}.leadForm .formButton{margin-top:10px}.consent{margin-top:11px}}
 
 /* Brighter Vedmaan-blue footer. */
 footer{position:relative;background:radial-gradient(circle at 12% 10%,#15518f 0%,#0b3d79 28%,#062a59 67%,#041f45 100%);color:#fff;border-top:1px solid rgba(239,198,103,.72);overflow:hidden}
