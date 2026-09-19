@@ -2331,7 +2331,14 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
   .propertyConnectivityCopy>h2{order:2}
   .propertyConnectivityCopy>p:not(.eyebrow){order:3}
   .propertyConnectivityVisual{order:10}
-  .propertyConnectivityFacts{order:20}
+  .propertyConnectivityVisual{
+    width:100%;
+  }
+  .propertyConnectivityFacts{
+    order:20;
+    width:100%;
+    padding:28px 0 0;
+  }
   .propertyConnectivity>.projectDestinationGrid{order:30}
   .propertyConnectivityCopy>.button{
     order:91;
