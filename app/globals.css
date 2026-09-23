@@ -2758,6 +2758,17 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
 .adminDashboardShell .adminStats a.active:before{background:#d5a13b}
 .adminDashboardShell .adminStats b{font-size:30px}
 .adminDashboardShell .adminTableCard{border-radius:11px;box-shadow:0 16px 42px rgba(16,39,71,.06)}
+.adminDashboardShell .adminTableCard th{padding:16px 18px;font-size:10px;letter-spacing:.1em}
+.adminDashboardShell .adminTableCard td{padding:20px 18px;font-size:12px;line-height:1.6}
+.adminDashboardShell .adminTableCard td:first-child{font-size:13px;font-weight:700;color:#17395f}
+.adminDashboardShell .adminTableCard td strong{font-size:12px;color:#102747}
+.adminDashboardShell .adminTableCard td small{margin-top:4px;font-size:11px;color:#718096}
+.adminDashboardShell .adminBadge,.adminDashboardShell .mailSent,.adminDashboardShell .mailPending{width:auto;height:auto;min-height:0;padding:6px 10px;border-radius:99px;font-size:9px;line-height:1.25;white-space:nowrap}
+.adminDashboardShell .adminBadge{display:inline-flex;align-items:center;background:#edf3fa;color:#0b3b78}
+.adminDashboardShell .adminBadge-agent{background:#f8ecd0;color:#8b5c08}
+.adminDashboardShell .adminTableCard details summary{font-size:11px}
+.adminDashboardShell .adminTableHead h2{font-size:28px}
+.adminDashboardShell .adminTableHead span{font-size:11px}
 .adminDashboardShell .smtpSettingsCard{max-width:none;margin:28px 0 0}
 .accountSettingsCard{max-width:820px;margin:28px 0 0;padding:34px;border:1px solid #dbe1e8;border-radius:14px;background:#fff;box-shadow:0 18px 50px rgba(16,39,71,.07)}
 .accountSettingsFields{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px}
