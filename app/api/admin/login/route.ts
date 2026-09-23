@@ -6,7 +6,7 @@ export const runtime = "nodejs";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    if (typeof body.email !== "string" || typeof body.password !== "string" || !validateAdminCredentials(body.email, body.password)) {
+    if (typeof body.email !== "string" || typeof body.password !== "string" || !(await validateAdminCredentials(body.email, body.password))) {
       return Response.json({ error: "Invalid email or password." }, { status: 401 });
     }
     const session = createAdminSession();

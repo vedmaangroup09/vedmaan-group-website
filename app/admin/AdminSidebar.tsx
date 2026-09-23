@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { CalendarCheck, ExternalLink, LayoutDashboard, Mail, MessageSquareText, UsersRound } from "lucide-react";
+import { CalendarCheck, ExternalLink, KeyRound, LayoutDashboard, Mail, MessageSquareText, UsersRound } from "lucide-react";
 import AdminLogoutButton from "./AdminLogoutButton";
 
-type AdminSection = "all" | "site_visit" | "contact" | "agent" | "settings";
+type AdminSection = "all" | "site_visit" | "contact" | "agent" | "settings" | "account";
 
 export default function AdminSidebar({ active }: { active: AdminSection }) {
   return <aside className="adminSidebar">
@@ -17,6 +17,7 @@ export default function AdminSidebar({ active }: { active: AdminSection }) {
       <a className={active === "contact" ? "active" : ""} href="/admin?type=contact"><MessageSquareText /><span>Contact enquiries</span></a>
       <a className={active === "agent" ? "active" : ""} href="/admin?type=agent"><UsersRound /><span>Agent registrations</span></a>
       <a className={active === "settings" ? "active" : ""} href="/admin/settings"><Mail /><span>Email settings</span></a>
+      <a className={active === "account" ? "active" : ""} href="/admin/account"><KeyRound /><span>Account settings</span></a>
       <p>Website</p>
       <a href="/" target="_blank" rel="noopener noreferrer"><ExternalLink /><span>View website</span></a>
     </nav>
