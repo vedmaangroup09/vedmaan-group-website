@@ -13,7 +13,7 @@ export default function AdminSidebar({ active }: { active: AdminSection }) {
     <nav className="adminSidebarNav" aria-label="Dashboard navigation">
       <p>Workspace</p>
       <a className={active === "all" ? "active" : ""} href="/admin"><LayoutDashboard /><span>All submissions</span></a>
-      <a className={active === "site_visit" ? "active" : ""} href="/admin?type=site_visit"><CalendarCheck /><span>Site visits</span></a>
+      <a className={active === "site_visit" ? "active" : ""} href="/admin?type=site_visit"><CalendarCheck /><span>Site visit requests</span></a>
       <a className={active === "contact" ? "active" : ""} href="/admin?type=contact"><MessageSquareText /><span>Contact enquiries</span></a>
       <a className={active === "agent" ? "active" : ""} href="/admin?type=agent"><UsersRound /><span>Agent registrations</span></a>
       <a className={active === "settings" ? "active" : ""} href="/admin/settings"><Mail /><span>Email settings</span></a>
