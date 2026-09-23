@@ -29,21 +29,58 @@ export function getDatabase() {
 export async function ensureSubmissionsTable() {
   if (!schemaReady) {
     schemaReady = getDatabase().query(`
-      CREATE TABLE IF NOT EXISTS form_submissions (
+      CREATE TABLE IF NOT EXISTS site_visit_submissions (
         id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-        form_type VARCHAR(60) NOT NULL,
-        name VARCHAR(180) NULL,
-        email VARCHAR(190) NULL,
-        phone VARCHAR(40) NULL,
+        name VARCHAR(180) NOT NULL,
+        phone VARCHAR(40) NOT NULL,
+        email VARCHAR(190) NOT NULL,
+        message TEXT NULL,
         payload JSON NOT NULL,
         source_page VARCHAR(255) NULL,
         email_sent TINYINT(1) NOT NULL DEFAULT 0,
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (id),
-        INDEX idx_form_type (form_type),
         INDEX idx_created_at (created_at)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
     `).then(() => getDatabase().query(`
+      CREATE TABLE IF NOT EXISTS contact_submissions (
+        id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+        name VARCHAR(180) NOT NULL,
+        email VARCHAR(190) NOT NULL,
+        phone VARCHAR(40) NOT NULL,
+        message TEXT NOT NULL,
+        consent VARCHAR(30) NULL,
+        payload JSON NOT NULL,
+        source_page VARCHAR(255) NULL,
+        email_sent TINYINT(1) NOT NULL DEFAULT 0,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (id),
+        INDEX idx_created_at (created_at)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    `)).then(() => getDatabase().query(`
+      CREATE TABLE IF NOT EXISTS agent_registrations (
+        id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+        company_name VARCHAR(180) NOT NULL,
+        company_type VARCHAR(100) NOT NULL,
+        owner_name VARCHAR(180) NOT NULL,
+        contact_name VARCHAR(180) NULL,
+        mobile VARCHAR(40) NOT NULL,
+        office_address TEXT NOT NULL,
+        manager VARCHAR(180) NOT NULL,
+        rera_number VARCHAR(120) NOT NULL,
+        agreement_1 VARCHAR(30) NULL,
+        agreement_2 VARCHAR(30) NULL,
+        agreement_3 VARCHAR(30) NULL,
+        agreement_4 VARCHAR(30) NULL,
+        agreement_5 VARCHAR(30) NULL,
+        payload JSON NOT NULL,
+        source_page VARCHAR(255) NULL,
+        email_sent TINYINT(1) NOT NULL DEFAULT 0,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (id),
+        INDEX idx_created_at (created_at)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    `)).then(() => getDatabase().query(`
       CREATE TABLE IF NOT EXISTS application_settings (
         setting_key VARCHAR(100) NOT NULL,
         setting_value TEXT NOT NULL,

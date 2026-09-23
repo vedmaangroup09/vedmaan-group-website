@@ -21,7 +21,7 @@ export default function ContactPage() {
       <div className="contactHeroCopy">
         <p className="eyebrow light"><span /> Connect with Vedmaan</p>
         <h1>Let&apos;s find your<br /><em>place for tomorrow.</em></h1>
-        <p>From choosing the right project to arranging a private site visit, our property team is here to guide your next step.</p>
+        <p><span className="contactHeroDescriptionDesktop">From choosing the right project to arranging a private site visit, our property team is here to guide your next step.</span><span className="contactHeroDescriptionMobile">Get project guidance and book a private site visit.</span></p>
         <div><a className="button gold" href="tel:+918383953751">Call our team <Phone /></a><a href="#enquiry">Send an enquiry <ArrowRight /></a></div>
       </div>
       <div className="contactHeroCards"><span><b>8</b><small>Communities</small></span><span><b>Jhajjar</b><small>Haryana</small></span><span><b>Private</b><small>Site visits</small></span></div>

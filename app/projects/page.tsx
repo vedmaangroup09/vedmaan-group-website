@@ -100,7 +100,7 @@ export default function ProjectsPage() {
         <div className="projectsHeroCopy">
           <p className="eyebrow light"><span /> Building a brighter tomorrow</p>
           <h1>Land that creates<br /><em>lasting value.</em></h1>
-          <p>Thoughtfully planned plotted communities where open surroundings, connected living and long-term possibilities come together.</p>
+          <p><span className="projectsHeroDescriptionDesktop">Thoughtfully planned plotted communities where open surroundings, connected living and long-term possibilities come together.</span><span className="projectsHeroDescriptionMobile">Well-planned communities for better living and lasting value.</span></p>
           <div className="projectsHeroActions"><a className="button gold" href="#project-list-title">Explore communities <ArrowRight /></a><button className="projectsWatchVideo" type="button" onClick={() => setVideoOpen(true)}><span><Play fill="currentColor" /></span> Watch Video</button></div>
         </div>
       </section>

@@ -23,12 +23,14 @@ import {
 import { CSSProperties, FormEvent, useEffect, useRef, useState } from "react";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
+import FloatingContactLinks from "./components/FloatingContactLinks";
 import { submitWebsiteForm } from "../lib/submit-form";
 
 const projects = [
   {
     slug: "south-city-1",
     name: "South City 1",
+    type: "Plots",
     sector: "Sector 36, Jhajjar",
     rera: "HRERA-PKL-JJR-572-2024",
     plan: "DDJAY",
@@ -39,6 +41,7 @@ const projects = [
   {
     slug: "south-city-2",
     name: "South City 2",
+    type: "Residential Plots",
     sector: "Sector 37, Jhajjar",
     rera: "HRERA-PKL-JJR-637-2024",
     plan: "DDJAY",
@@ -49,6 +52,7 @@ const projects = [
   {
     slug: "dream-valley",
     name: "Dream Valley",
+    type: "Plots",
     sector: "Sector 7, Jhajjar",
     rera: "HRERA-PKL-JJR-940-2026",
     plan: "40 : 60",
@@ -59,6 +63,7 @@ const projects = [
   {
     slug: "sector-27",
     name: "Sector 27",
+    type: "Residential",
     sector: "Sector 27, Jhajjar",
     image: "/assets/gallery-1.webp",
     tag: "Upcoming",
@@ -67,6 +72,7 @@ const projects = [
   {
     slug: "south-city-3",
     name: "South City 3",
+    type: "Plots",
     sector: "Jhajjar",
     image: "/assets/gallery-6.webp",
     tag: "Upcoming",
@@ -75,6 +81,7 @@ const projects = [
   {
     slug: "south-city-1-extension",
     name: "South City 1 Extension",
+    type: "Residential",
     sector: "Jhajjar",
     image: "/assets/story-main.webp",
     tag: "Upcoming",
@@ -83,6 +90,7 @@ const projects = [
   {
     slug: "sector-1-pataudi",
     name: "Sector 1",
+    type: "Plots",
     sector: "Sector 1, Pataudi",
     image: "/assets/gallery-2.webp",
     tag: "Upcoming",
@@ -91,12 +99,26 @@ const projects = [
   {
     slug: "sector-4-pataudi",
     name: "Sector 4",
+    type: "Residential",
     sector: "Sector 4, Pataudi",
     image: "/assets/gallery-5.webp",
     tag: "Upcoming",
     tagline: "Designed for tomorrow.",
   },
 ];
+
+const matchesPropertyType = (project: (typeof projects)[number], propertyType: string) =>
+  propertyType === "All properties" || propertyType === "Residential" ||
+  (propertyType === "Plots" && project.type.includes("Plots"));
+
+const filterProjects = (propertyType: string, transaction: string, city: string, searchQuery: string) => {
+  const query = searchQuery.trim().toLocaleLowerCase();
+  return projects.filter((project) =>
+    matchesPropertyType(project, propertyType) && transaction === "Buy" &&
+    (!city || project.sector.toLocaleLowerCase().includes(city.toLocaleLowerCase())) &&
+    (!query || [project.name, project.sector, project.tag, project.tagline, project.type].some((value) => value.toLocaleLowerCase().includes(query)))
+  );
+};
 
 const gallery = [
   "gallery-1.webp",
@@ -144,11 +166,13 @@ function PropertyDropdown({
   value,
   options,
   onChange,
+  emptyLabel = "No options available",
 }: {
   label: string;
   value: string;
   options: { label: string; value: string }[];
   onChange: (value: string) => void;
+  emptyLabel?: string;
 }) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -169,14 +193,18 @@ function PropertyDropdown({
     };
   }, [open]);
 
+  useEffect(() => {
+    if (options.length === 0) setOpen(false);
+  }, [options.length]);
+
   return (
     <div ref={dropdownRef} className={`propertyDropdown${open ? " open" : ""}`}>
       <span className="propertyDropdownLabel">{label}</span>
-      <button type="button" className="propertyDropdownTrigger" aria-haspopup="listbox" aria-expanded={open} onClick={() => setOpen(!open)}>
-        <span>{options.find((option) => option.value === value)?.label}</span>
+      <button type="button" className="propertyDropdownTrigger" aria-haspopup="listbox" aria-expanded={open && options.length > 0} disabled={options.length === 0} onClick={() => setOpen(!open)}>
+        <span>{options.find((option) => option.value === value)?.label ?? emptyLabel}</span>
         <ChevronDown size={16} aria-hidden="true" />
       </button>
-      {open && (
+      {open && options.length > 0 && (
         <div className="propertyDropdownMenu" role="listbox" aria-label={label}>
           {options.map((option) => (
             <button key={option.value} type="button" role="option" aria-selected={option.value === value} onClick={() => { onChange(option.value); setOpen(false); }}>
@@ -255,18 +283,27 @@ export default function Home() {
   const [propertyType, setPropertyType] = useState("Residential");
   const [transaction, setTransaction] = useState("Buy");
   const [searchCity, setSearchCity] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [searchApplied, setSearchApplied] = useState(false);
-  const [visibleProjects, setVisibleProjects] = useState(projects);
-  const matchingProjects = projects.filter((project) =>
-    (propertyType === "Residential" || propertyType === "Land") && transaction === "Buy" &&
-    (!searchCity || project.sector.includes(searchCity))
-  );
+  const typeProjects = projects.filter((project) => matchesPropertyType(project, propertyType));
+  const lookingOptions = typeProjects.length ? [{ label: "Buy", value: "Buy" }] : [];
+  const locationOptions = transaction === "Buy" && typeProjects.length ? [
+    { label: "All locations", value: "" },
+    ...["Jhajjar", "Pataudi"].filter((city) => typeProjects.some((project) => project.sector.includes(city))).map((city) => ({ label: city, value: city })),
+  ] : [];
+  const visibleProjects = searchApplied ? filterProjects(propertyType, transaction, searchCity, searchQuery) : projects;
   const searchProperties = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setVisibleProjects(matchingProjects);
     setProjectSlide(0);
     setSearchApplied(true);
-    document.getElementById("projects")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  };
+  const clearPropertySearch = () => {
+    setProjectSlide(0);
+    setSearchApplied(false);
+    setPropertyType("Residential");
+    setTransaction("Buy");
+    setSearchCity("");
+    setSearchQuery("");
   };
 
   const [headerState, setHeaderState] = useState<"top" | "visible" | "hidden">(
@@ -392,13 +429,17 @@ export default function Home() {
       <div className="heroFollowup">
       <form className="propertySearch" onSubmit={searchProperties} aria-label="Find a property">
         <div className="propertySearchFields">
-          <PropertyDropdown label="Property type" value={propertyType} onChange={setPropertyType} options={["Residential", "Land", "Commercial", "Industrial"].map((value) => ({ label: value, value }))} />
-          <PropertyDropdown label="Looking to" value={transaction} onChange={setTransaction} options={["Buy", "Rent"].map((value) => ({ label: value, value }))} />
-          <PropertyDropdown label="Location" value={searchCity} onChange={setSearchCity} options={[{ label: "All locations", value: "" }, { label: "Jhajjar", value: "Jhajjar" }, { label: "Pataudi", value: "Pataudi" }]} />
-          <div className="propertyBudget"><span>Budget</span><div>Price on enquiry</div></div>
+          <PropertyDropdown label="Property type" value={propertyType} onChange={(value) => { setPropertyType(value); setTransaction(projects.some((project) => matchesPropertyType(project, value)) ? "Buy" : ""); setSearchCity(""); setSearchQuery(""); setProjectSlide(0); }} options={["All properties", "Residential", "Plots", "Commercial"].map((value) => ({ label: value, value }))} />
+          <PropertyDropdown label="Looking to" value={transaction} onChange={(value) => { setTransaction(value); setSearchCity(""); setProjectSlide(0); }} options={lookingOptions} emptyLabel="No listings" />
+          <PropertyDropdown label="Location" value={searchCity} onChange={(value) => { setSearchCity(value); setProjectSlide(0); }} options={locationOptions} emptyLabel="No locations" />
+          <label className="propertyBudget" htmlFor="property-keyword"><span>Project or location</span><input id="property-keyword" type="search" value={searchQuery} onChange={(event) => { setSearchQuery(event.target.value); setProjectSlide(0); }} placeholder={typeProjects.length ? "Name or sector" : "No projects available"} disabled={!typeProjects.length} /></label>
           <button className="propertySearchSubmit" type="submit">Search properties <ArrowRight size={18} /></button>
         </div>
       </form>
+      {searchApplied && <section className="propertySearchResults" aria-label="Property search results" aria-live="polite">
+        <div className="propertySearchResultsHead"><div><span>Search results</span><h2>{visibleProjects.length} matching project{visibleProjects.length === 1 ? "" : "s"}</h2></div><button type="button" onClick={clearPropertySearch}>Clear search</button></div>
+        {visibleProjects.length ? <div className="propertySearchResultsGrid">{visibleProjects.map((project) => <a className="propertySearchResult" href={`/projects/${project.slug}`} key={project.slug}><span className="propertySearchResultImage"><Image src={project.image} alt="" fill sizes="96px" /></span><span className="propertySearchResultCopy"><small>{project.tag} · {project.type}</small><strong>{project.name}</strong><span>{project.sector}</span></span><ArrowRight size={18} aria-hidden="true" /></a>)}</div> : <div className="propertySearchNoResults"><p>{transaction === "Rent" ? "No rental projects are currently listed." : propertyType === "Commercial" ? "No commercial projects are currently listed." : "No listed project matches that search. Try another name, sector or location."}</p><a href="/contact#enquiry">Ask our team <ArrowRight size={16} /></a></div>}
+      </section>}
 
       <section className="intro section" id="about">
         <div className="introTopNote">
@@ -540,7 +581,6 @@ export default function Home() {
             connectivity and enduring value in Jhajjar’s most promising sectors.
           </p>
         </div>
-        {searchApplied && <div className="propertySearchSummary" role="status"><span>{visibleProjects.length ? `${visibleProjects.length} matching projects` : "No listed projects match your search. Try another location or property type."}</span><button type="button" onClick={() => { setVisibleProjects(projects); setProjectSlide(0); setSearchApplied(false); setPropertyType("Residential"); setTransaction("Buy"); setSearchCity(""); }}>Clear search</button>{!visibleProjects.length && <a href="#contact">Ask our team <ArrowRight size={15} /></a>}</div>}
         <div className="projectSectionActions">
           <a className="button projectAllButton" href="/projects">
             View all projects <ArrowRight size={17} />
@@ -978,9 +1018,7 @@ export default function Home() {
       >
         <ArrowUp />
       </button>
-      <a className="floatingCall" href="tel:+918383953751" aria-label="Call Vedmaan Group">
-        <span><Phone /></span>
-      </a>
+      <FloatingContactLinks />
 
       <SiteFooter />
     </main>

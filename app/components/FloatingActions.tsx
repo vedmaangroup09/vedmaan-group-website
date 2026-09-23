@@ -1,7 +1,8 @@
 "use client";
 
-import { ArrowUp, Phone } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
+import FloatingContactLinks from "./FloatingContactLinks";
 
 export default function FloatingActions() {
   const [showTop, setShowTop] = useState(false);
@@ -22,8 +23,6 @@ export default function FloatingActions() {
     >
       <ArrowUp />
     </button>
-    <a className="floatingCall" href="tel:+918383953751" aria-label="Call Vedmaan Group">
-      <span><Phone /></span>
-    </a>
+    <FloatingContactLinks />
   </>;
 }

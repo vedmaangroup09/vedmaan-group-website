@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, Building2, Eye, Handshake, MapPin, Route, ShieldCheck, Target, TreePine, UsersRound } from "lucide-react";
@@ -32,6 +35,26 @@ const approachProjects = [
 ];
 
 export default function OurStoryPage() {
+  const [activeProject, setActiveProject] = useState(0);
+  const swipeStart = useRef<{ x: number; y: number } | null>(null);
+  const moveProject = (direction: number) => setActiveProject((current) => (current + direction + approachProjects.length) % approachProjects.length);
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      if (window.innerWidth <= 560 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches && !swipeStart.current && !document.hidden) {
+        setActiveProject((current) => (current + 1) % approachProjects.length);
+      }
+    }, 3200);
+    return () => window.clearInterval(timer);
+  }, [activeProject]);
+  const handleSwipe = (x: number, y: number) => {
+    if (!swipeStart.current) return;
+    const dx = x - swipeStart.current.x;
+    const dy = y - swipeStart.current.y;
+    if (Math.abs(dx) > 28 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+      swipeStart.current = null;
+      moveProject(dx < 0 ? 1 : -1);
+    }
+  };
   return <main className="storyPage">
     <SiteHeader />
     <section className="storyHero">
@@ -75,9 +98,9 @@ export default function OurStoryPage() {
         </div>
         <div className="storyApproachFooter"><Link className="button gold" href="/projects">Explore projects <ArrowRight /></Link><span>People. Places. Possibilities.</span></div>
       </div>
-      <div className="storyApproachVisual">
+      <div className="storyApproachVisual" onTouchStart={(event) => { swipeStart.current = { x: event.touches[0].clientX, y: event.touches[0].clientY }; }} onTouchMove={(event) => handleSwipe(event.touches[0].clientX, event.touches[0].clientY)} onTouchEnd={(event) => { handleSwipe(event.changedTouches[0].clientX, event.changedTouches[0].clientY); swipeStart.current = null; }} onTouchCancel={() => { swipeStart.current = null; }}>
         <p className="storyApproachNote">Building more<br /><em>together.</em></p>
-        {approachProjects.map((project, index) => <figure className="storyApproachPanel" key={project.name} style={{ animationDelay: `${index * -28}s` }}><Image src={project.image} alt={`${project.name}, ${project.location}`} fill unoptimized loading="eager" sizes="(max-width: 900px) 48vw, 24vw" /><figcaption><span>{project.tagline}</span><small>{project.name} · {project.location}</small></figcaption></figure>)}
+        {approachProjects.map((project, index) => { const offset = (index - activeProject + approachProjects.length) % approachProjects.length; const position = offset === 0 ? "active" : offset === 1 ? "next" : offset === approachProjects.length - 1 ? "previous" : "hidden"; return <figure className={`storyApproachPanel storyApproachPanel--${position}`} key={project.name} style={{ animationDelay: `${index * -28}s` }}><Image src={project.image} alt={`${project.name}, ${project.location}`} fill unoptimized loading="eager" sizes="(max-width: 900px) 48vw, 24vw" /><figcaption><span>{project.tagline}</span><small>{project.name} · {project.location}</small></figcaption></figure>; })}
       </div>
     </section>
 

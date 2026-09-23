@@ -10,6 +10,12 @@ const requirements: Record<string, string[]> = {
   agent: ["companyName", "companyType", "ownerName", "mobile", "officeAddress", "manager", "reraNumber"],
 };
 
+const submissionTables = {
+  site_visit: "site_visit_submissions",
+  contact: "contact_submissions",
+  agent: "agent_registrations",
+} as const;
+
 function cleanFields(value: unknown) {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
   const output: Record<string, string | boolean> = {};
@@ -35,16 +41,31 @@ export async function POST(request: Request) {
 
     await ensureSubmissionsTable();
     const sourcePage = typeof body.sourcePage === "string" ? body.sourcePage.slice(0, 255) : null;
-    const [result] = await getDatabase().execute(
-      "INSERT INTO form_submissions (form_type, name, email, phone, payload, source_page) VALUES (?, ?, ?, ?, ?, ?)",
-      [formType, fields.name || fields.companyName || null, fields.email || null, fields.phone || fields.mobile || null, JSON.stringify(fields), sourcePage],
-    );
+    let result: unknown;
+    if (formType === "site_visit") {
+      [result] = await getDatabase().execute(
+        "INSERT INTO site_visit_submissions (name, phone, email, message, payload, source_page) VALUES (?, ?, ?, ?, ?, ?)",
+        [fields.name, fields.phone, fields.email, fields.message || null, JSON.stringify(fields), sourcePage],
+      );
+    } else if (formType === "contact") {
+      [result] = await getDatabase().execute(
+        "INSERT INTO contact_submissions (name, email, phone, message, consent, payload, source_page) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        [fields.name, fields.email, fields.phone, fields.message, fields.consent || null, JSON.stringify(fields), sourcePage],
+      );
+    } else {
+      [result] = await getDatabase().execute(
+        `INSERT INTO agent_registrations
+          (company_name, company_type, owner_name, contact_name, mobile, office_address, manager, rera_number, agreement_1, agreement_2, agreement_3, agreement_4, agreement_5, payload, source_page)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [fields.companyName, fields.companyType, fields.ownerName, fields.contactName || null, fields.mobile, fields.officeAddress, fields.manager, fields.reraNumber, fields.agreement1 || null, fields.agreement2 || null, fields.agreement3 || null, fields.agreement4 || null, fields.agreement5 || null, JSON.stringify(fields), sourcePage],
+      );
+    }
     const id = (result as { insertId: number }).insertId;
     let emailSent = false;
     try {
       await sendSubmissionMail(formType, fields);
       emailSent = true;
-      await getDatabase().execute("UPDATE form_submissions SET email_sent = 1 WHERE id = ?", [id]);
+      await getDatabase().execute(`UPDATE ${submissionTables[formType as keyof typeof submissionTables]} SET email_sent = 1 WHERE id = ?`, [id]);
     } catch (mailError) {
       console.error("Submission saved but notification email failed", mailError);
     }
