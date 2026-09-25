@@ -2821,6 +2821,18 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
 
 /* A single three-action contact bar replaces the floating side buttons on phones. */
 .mobileContactBar{display:none}
+
+/* Readable footer credits and a restrained legal-page type scale. */
+.footerBottom{font-size:10px;line-height:1.55}
+.legalPage .legalHero h1{font-size:clamp(40px,4vw,58px);line-height:1.02}
+.legalPage .legalContent h2{font-size:28px;line-height:1.15;letter-spacing:-.025em}
+.legalPage .legalContent p{font-size:14px;line-height:1.85}
+@media(max-width:700px){
+  .footerBottom{font-size:9px;line-height:1.6}
+  .legalPage .legalHero h1{font-size:38px}
+  .legalPage .legalContent h2{font-size:24px}
+  .legalPage .legalContent p{font-size:14px}
+}
 @media(max-width:760px){
   html,body{max-width:100%;overflow-x:clip}
   .floatingCall,.floatingWhatsApp,.floatingEnquire,.backToTop{display:none!important}
