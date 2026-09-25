@@ -34,6 +34,7 @@ export async function POST(request: Request) {
     const fields = cleanFields(body.fields);
     if (!fields || !requirements[formType]) return Response.json({ error: "Invalid form submission." }, { status: 400 });
     if (typeof fields.website === "string" && fields.website) return Response.json({ ok: true });
+    delete fields.website;
     for (const required of requirements[formType]) {
       if (!fields[required] || String(fields[required]).startsWith("Select ")) return Response.json({ error: "Please complete all required fields." }, { status: 400 });
     }
