@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowRight, CalendarCheck, Clock3, MapPin, MessageCircle, Phone, Route, ShieldCheck } from "lucide-react";
+import { ArrowRight, CalendarCheck, Clock3, Mail, MapPin, MessageCircle, Phone, Route, ShieldCheck } from "lucide-react";
 import ContactEnquiryForm from "../components/ContactEnquiryForm";
 import FloatingActions from "../components/FloatingActions";
 import SiteFooter from "../components/SiteFooter";
@@ -35,6 +35,7 @@ export default function ContactPage() {
         <div className="contactDirectGrid">
           <a href="tel:+918383953751"><i><Phone /></i><span><small>Call the property desk</small><b>+91 83839 53751</b><em>Speak directly with our team</em></span><ArrowRight /></a>
           <a href="https://wa.me/918383953751" target="_blank" rel="noreferrer"><i><MessageCircle /></i><span><small>Chat on WhatsApp</small><b>Start a conversation</b><em>Share your project requirement</em></span><ArrowRight /></a>
+          <a href="mailto:info@vedmaangroup.com"><i><Mail /></i><span><small>Email Vedmaan</small><b>info@vedmaangroup.com</b><em>Send your enquiry by email</em></span><ArrowRight /></a>
           <div><i><MapPin /></i><span><small>Visit our office</small><b>Jhajjar, Haryana</b><em>Meet our property advisors</em></span></div>
         </div>
       </div>

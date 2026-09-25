@@ -4,7 +4,8 @@ import { FormEvent, useEffect, useState } from "react";
 import { MailCheck, Save } from "lucide-react";
 
 type Settings = { host: string; port: number; secure: boolean; user: string; password: string; from: string; recipient: string; passwordConfigured?: boolean };
-const initial: Settings = { host: "smtp.hostinger.com", port: 465, secure: true, user: "", password: "", from: "", recipient: "" };
+const mailbox = "info@vedmaangroup.com";
+const initial: Settings = { host: "smtp.hostinger.com", port: 465, secure: true, user: mailbox, password: "", from: mailbox, recipient: mailbox };
 
 export default function SmtpSettingsForm() {
   const [settings, setSettings] = useState(initial);
@@ -27,7 +28,7 @@ export default function SmtpSettingsForm() {
   const update = (field: keyof Settings, value: string | number | boolean) => setSettings((current) => ({ ...current, [field]: value }));
   function submit(event: FormEvent<HTMLFormElement>) { event.preventDefault(); void save(false); }
   return <form className="smtpSettingsCard" onSubmit={submit}>
-    <div className="smtpSettingsHead"><div><span>Email delivery</span><h2>SMTP configuration</h2><p>Form notifications will be sent to the recipient address below.</p></div><MailCheck /></div>
+    <div className="smtpSettingsHead"><div><span>Email delivery</span><h2>SMTP configuration</h2><p>Form notifications will be sent to the recipient address below. Enter the mailbox password here only; it is encrypted before being saved.</p></div><MailCheck /></div>
     <div className="smtpSettingsGrid">
       <label>SMTP host*<input required value={settings.host} onChange={(event) => update("host", event.target.value)} /></label>
       <label>SMTP port*<input required type="number" value={settings.port} onChange={(event) => update("port", Number(event.target.value))} /></label>

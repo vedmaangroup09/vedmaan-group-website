@@ -14,6 +14,8 @@ export type SmtpSettings = {
 
 type SettingRow = RowDataPacket & { setting_key: string; setting_value: string; is_secret: number };
 
+const DEFAULT_MAILBOX = "info@vedmaangroup.com";
+
 function key() {
   const secret = process.env.ADMIN_SESSION_SECRET;
   if (!secret || secret.length < 32) throw new Error("ADMIN_SESSION_SECRET must contain at least 32 characters");
@@ -42,10 +44,10 @@ export async function getSmtpSettings(): Promise<SmtpSettings> {
     host: values.smtp_host || process.env.SMTP_HOST || "smtp.hostinger.com",
     port: Number(values.smtp_port || process.env.SMTP_PORT || 465),
     secure: (values.smtp_secure || process.env.SMTP_SECURE || "true") === "true",
-    user: values.smtp_user || process.env.SMTP_USER || "",
+    user: values.smtp_user || process.env.SMTP_USER || DEFAULT_MAILBOX,
     password: values.smtp_password || process.env.SMTP_PASSWORD || "",
-    from: values.smtp_from || process.env.SMTP_FROM || "",
-    recipient: values.smtp_recipient || process.env.FORM_NOTIFICATION_EMAIL || "",
+    from: values.smtp_from || process.env.SMTP_FROM || DEFAULT_MAILBOX,
+    recipient: values.smtp_recipient || process.env.FORM_NOTIFICATION_EMAIL || DEFAULT_MAILBOX,
   };
 }
 
