@@ -879,14 +879,12 @@ export default function Home() {
         <div className="testimonyCarousel">
           <button className="testimonyArrow previous" type="button" aria-label="Previous testimonials" onClick={() => setTestimonialSlide((current) => (current - 1 + testimonials.length) % testimonials.length)}><ChevronRight /></button>
           <div className="testimonyViewport">
-            <div className="testimonyTrack" style={{
-              "--testimony-desktop-shift": `calc(-${testimonialSlide * 33.333333}% - ${testimonialSlide * 8}px)`,
-              "--testimony-mobile-shift": `calc(-${testimonialSlide * 100}% - ${testimonialSlide * 24}px)`,
-            } as CSSProperties}>
-              {(testimonials.length === 1 ? testimonials : [...testimonials, ...testimonials.slice(0, 2)]).map((item, itemIndex) => {
-                const index = itemIndex % testimonials.length;
+            <div className="testimonyTrack testimonyCircularTrack">
+              {Array.from({ length: Math.min(3, testimonials.length) }, (_, offset) => {
+                const index = (testimonialSlide + offset) % testimonials.length;
+                const item = testimonials[index];
                 return (
-                  <article className={itemIndex === testimonialSlide ? "isFeatured" : ""} key={`${item.name}-${itemIndex}`}>
+                  <article className={offset === 0 ? "isFeatured" : ""} key={`${testimonialSlide}-${index}`}>
                     <div className="testimonyCardTop"><Quote aria-hidden="true" /></div>
                     <blockquote>&ldquo;{item.quote}&rdquo;</blockquote>
                     <div className="testimonyProfile">

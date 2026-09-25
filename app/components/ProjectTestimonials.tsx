@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ChevronRight, Quote } from "lucide-react";
-import { type CSSProperties, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const testimonials = [
   { quote: "A truly impressive plotting project with a very promising location. The team explained everything clearly and patiently.", name: "Sukanya Yadav", details: "Google Review · 5 stars", image: "/assets/reviewer-sukanya-yadav.webp", rating: 5 },
@@ -32,12 +32,12 @@ export default function ProjectTestimonials() {
     <div className="testimonyCarousel">
       <button className="testimonyArrow previous" type="button" aria-label="Previous testimonials" onClick={() => setSlide((current) => (current - 1 + testimonials.length) % testimonials.length)}><ChevronRight /></button>
       <div className="testimonyViewport">
-        <div className="testimonyTrack" style={{ "--testimony-desktop-shift": `calc(-${slide * 33.333333}% - ${slide * 6}px)`, "--testimony-mobile-shift": `calc(-${slide * 100}% - ${slide * 24}px)` } as CSSProperties}>
-          {[...testimonials, ...testimonials.slice(0, 2)].map((item, itemIndex) => <article className={itemIndex === slide ? "isFeatured" : ""} key={`${item.name}-${itemIndex}`}>
+        <div className="testimonyTrack testimonyCircularTrack">
+          {Array.from({ length: Math.min(3, testimonials.length) }, (_, offset) => { const index = (slide + offset) % testimonials.length; const item = testimonials[index]; return <article className={offset === 0 ? "isFeatured" : ""} key={`${slide}-${index}`}>
             <div className="testimonyCardTop"><Quote aria-hidden="true" /></div>
             <blockquote>&ldquo;{item.quote}&rdquo;</blockquote>
             <div className="testimonyProfile"><div className="testimonyAvatar"><Image src={item.image} alt="" fill sizes="46px" /></div><p><b>{item.name}</b><span>{item.details}</span></p><small aria-label={`${item.rating} out of 5 stars`}>{"★".repeat(item.rating)}{"☆".repeat(5 - item.rating)}</small></div>
-          </article>)}
+          </article>})}
         </div>
       </div>
       <button className="testimonyArrow next" type="button" aria-label="Next testimonials" onClick={() => setSlide((current) => (current + 1) % testimonials.length)}><ChevronRight /></button>

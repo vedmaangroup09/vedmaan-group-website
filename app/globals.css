@@ -2822,6 +2822,9 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
 /* A single three-action contact bar replaces the floating side buttons on phones. */
 .mobileContactBar{display:none}
 
+/* Keep testimonial cards in a stable circular set at every slide position. */
+.testimonyTrack.testimonyCircularTrack{transform:none}
+
 /* Readable footer credits and a restrained legal-page type scale. */
 .footerBottom{font-size:10px;line-height:1.55}
 .legalPage .legalHero h1{font-size:clamp(40px,4vw,58px);line-height:1.02}

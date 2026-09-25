@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, Building2, Camera, Check, ChevronRight, Droplets, Dumbbell, GraduationCap, HeartPulse, Layers3, Lightbulb, MapPin, Phone, Play, Quote, Route, ShieldCheck, TreePine, Trees, UsersRound, Waves, Wifi, X } from "lucide-react";
-import { type CSSProperties, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import FloatingActions from "../components/FloatingActions";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
@@ -170,12 +170,12 @@ export default function ProjectsPage() {
         <div className="testimonyCarousel">
           <button className="testimonyArrow previous" type="button" aria-label="Previous testimonials" onClick={() => setTestimonialSlide((current) => (current - 1 + projectTestimonials.length) % projectTestimonials.length)}><ChevronRight /></button>
           <div className="testimonyViewport">
-            <div className="testimonyTrack" style={{ "--testimony-desktop-shift": `calc(-${testimonialSlide * 33.333333}% - ${testimonialSlide * 6}px)`, "--testimony-mobile-shift": `calc(-${testimonialSlide * 100}% - ${testimonialSlide * 24}px)` } as CSSProperties}>
-              {[...projectTestimonials, ...projectTestimonials.slice(0, 2)].map((item, itemIndex) => <article className={itemIndex === testimonialSlide ? "isFeatured" : ""} key={`${item.name}-${itemIndex}`}>
+            <div className="testimonyTrack testimonyCircularTrack">
+              {Array.from({ length: Math.min(3, projectTestimonials.length) }, (_, offset) => { const index = (testimonialSlide + offset) % projectTestimonials.length; const item = projectTestimonials[index]; return <article className={offset === 0 ? "isFeatured" : ""} key={`${testimonialSlide}-${index}`}>
                 <div className="testimonyCardTop"><Quote aria-hidden="true" /></div>
                 <blockquote>&ldquo;{item.quote}&rdquo;</blockquote>
                 <div className="testimonyProfile"><div className="testimonyAvatar"><Image src={item.image} alt="" fill sizes="46px" /></div><p><b>{item.name}</b><span>{item.details}</span></p><small aria-label={`${item.rating} out of 5 stars`}>{"★".repeat(item.rating)}{"☆".repeat(5 - item.rating)}</small></div>
-              </article>)}
+              </article>})}
             </div>
           </div>
           <button className="testimonyArrow next" type="button" aria-label="Next testimonials" onClick={() => setTestimonialSlide((current) => (current + 1) % projectTestimonials.length)}><ChevronRight /></button>
