@@ -2822,6 +2822,8 @@ footer:before{content:"";position:absolute;right:-190px;top:-230px;width:520px;h
 /* A single three-action contact bar replaces the floating side buttons on phones. */
 .mobileContactBar{display:none}
 
+.smtpRecipientField{grid-column:1/-1}.smtpRecipientField small{display:block;margin-top:7px;color:#7b8797;font-size:9px;font-weight:400;line-height:1.5}
+
 /* Keep testimonial cards in a stable circular set at every slide position. */
 .testimonyTrack.testimonyCircularTrack{transform:none}
 

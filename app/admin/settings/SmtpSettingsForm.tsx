@@ -28,14 +28,14 @@ export default function SmtpSettingsForm() {
   const update = (field: keyof Settings, value: string | number | boolean) => setSettings((current) => ({ ...current, [field]: value }));
   function submit(event: FormEvent<HTMLFormElement>) { event.preventDefault(); void save(false); }
   return <form className="smtpSettingsCard" onSubmit={submit}>
-    <div className="smtpSettingsHead"><div><span>Email delivery</span><h2>SMTP configuration</h2><p>Form notifications will be sent to the recipient address below. Enter the mailbox password here only; it is encrypted before being saved.</p></div><MailCheck /></div>
+    <div className="smtpSettingsHead"><div><span>Email delivery</span><h2>SMTP configuration</h2><p>Choose the sending mailbox and the email address where website enquiries should be received. Enter the mailbox password here only; it is encrypted before being saved.</p></div><MailCheck /></div>
     <div className="smtpSettingsGrid">
       <label>SMTP host*<input required value={settings.host} onChange={(event) => update("host", event.target.value)} /></label>
       <label>SMTP port*<input required type="number" value={settings.port} onChange={(event) => update("port", Number(event.target.value))} /></label>
       <label>SMTP username*<input required type="email" value={settings.user} onChange={(event) => update("user", event.target.value)} /></label>
       <label>SMTP password{settings.passwordConfigured ? " (leave blank to keep current)" : "*"}<input type="password" value={settings.password} onChange={(event) => update("password", event.target.value)} autoComplete="new-password" /></label>
       <label>From email<input type="email" value={settings.from} placeholder="Defaults to SMTP username" onChange={(event) => update("from", event.target.value)} /></label>
-      <label>Notification recipient*<input required value={settings.recipient} placeholder="leads@example.com" onChange={(event) => update("recipient", event.target.value)} /></label>
+      <label className="smtpRecipientField">Send form notifications to*<input required type="email" value={settings.recipient} placeholder="info@vedmaangroup.com" onChange={(event) => update("recipient", event.target.value)} /><small>Contact enquiries, site-visit requests and agent registrations will be delivered to this address.</small></label>
       <label className="smtpSecure"><input type="checkbox" checked={settings.secure} onChange={(event) => update("secure", event.target.checked)} /><span>Use secure SSL/TLS connection</span></label>
     </div>
     {message && <p className="smtpSuccess">{message}</p>}{error && <p className="adminError">{error}</p>}
